@@ -1,23 +1,47 @@
-This is a generated Python package, made by:
+# Happy Holidays from Cisco NSO
 
-  ncs-make-package --service-skeleton python-and-template \
-                   --component-class main.Main holiday-manager
-
-It contains a dummy YANG model which implements a minimal Service
-and an Action that doesn't really do anything useful. They are
-there just to get you going.
-
-You will also find two test cases in:
-
-  test/internal/lux/service/
-  test/internal/lux/action/
-
-that you can run if you have the 'lux' testing tool.
-Your top Makefile also need to implement some Make targets
-as described in the Makefiles of the test cases.
-You can also just read the corresponding run.lux tests and
-do them manually if you wish.
-
-The 'lux' test tool can be obtained from:
-
-  https://github.com/hawk/lux.git
+```
+admin@ncs# show running-config list-of-holidays
+list-of-holidays Christmas
+ holiday-message "Merry Christmas!"
+!
+list-of-holidays Generic
+ holiday-message "Happy Holidays!"
+!
+list-of-holidays Hanukkah
+ holiday-message "Happy Hanukkah!"
+!
+list-of-holidays Kwanzaa
+ holiday-message "Happy Kwanzaa"
+!
+list-of-holidays "New Year's Day"
+ holiday-message "Happy New Years!"
+!
+admin@ncs# show running-config list-of-holidays | display json
+{
+  "data": {
+    "holiday-manager:list-of-holidays": [
+      {
+        "holiday": "Christmas",
+        "holiday-message": "Merry Christmas!"
+      },
+      {
+        "holiday": "Generic",
+        "holiday-message": "Happy Holidays!"
+      },
+      {
+        "holiday": "Hanukkah",
+        "holiday-message": "Happy Hanukkah!"
+      },
+      {
+        "holiday": "Kwanzaa",
+        "holiday-message": "Happy Kwanzaa"
+      },
+      {
+        "holiday": "New Year's Day",
+        "holiday-message": "Happy New Years!"
+      }
+    ]
+  }
+}
+```
