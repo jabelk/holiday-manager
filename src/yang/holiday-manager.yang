@@ -1,0 +1,18 @@
+module holiday-manager {
+
+  namespace "http://example.com/holiday-manager";
+  prefix holiday-manager;
+ 
+  list list-of-holidays {
+    description "This is a holiday service";
+
+    key holiday;
+    leaf holiday {
+      type string;
+    }
+
+    leaf holiday-message {
+      type string;
+    }
+  }
+}
